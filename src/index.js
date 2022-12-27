@@ -1,76 +1,17 @@
-class Carrier {
-    constructor(length = 5, health = 5, sunk = false) {
+class Ship {
+    constructor(length, hitTimes = 0, status = "operational") {
         this.length = length;
-        this.health = health;
-        this.sunk = sunk;
+        this.hitTimes = hitTimes;
+        this.status = status;
     }
     hit() {
-        this.health--;
+        this.hitTimes++;
+        if (this.hitTimes === this.length) this.isSunk();
     }
-    destroy() {
-        this.sunk = true;
+    isSunk() {
+        this.status = "sunk";
+        console.log("This ship is sunk");
     }
 }
 
-class Battleship {
-    constructor(length = 4, health = 4, sunk = false) {
-        this.length = length;
-        this.health = health;
-    }
-    hit() {
-        this.health--;
-    }
-    destroy() {
-        this.sunk = true;
-    }
-}
-
-class Destroyer {
-    constructor(length = 3, health = 3, sunk = false) {
-        this.length = length;
-        this.health = health;
-        this.sunk = sunk;
-    }
-    hit() {
-        this.health--;
-    }
-    destroy() {
-        this.sunk = true;
-    }
-}
-
-class Submarine {
-    constructor(length = 2, health = 2, sunk = false) {
-        this.length = length;
-        this.health = health;
-        this.sunk = sunk;
-    }
-    hit() {
-        this.health--;
-    }
-    destroy() {
-        this.sunk = true;
-    }
-}
-
-class PatrolBoat {
-    constructor(length = 1, health = 1, sunk = false) {
-        this.length = length;
-        this.health = health;
-        this.sunk = sunk;
-    }
-    hit() {
-        this.health--;
-    }
-    destroy() {
-        this.sunk = true;
-    }
-}
-
-const carrierA = new Carrier();
-const battleshipA = new Battleship();
-const destroyerA = new Destroyer();
-const SubmarineA = new Submarine();
-const boatA = new PatrolBoat();
-
-module.exports = {Carrier, Battleship, Destroyer, Submarine, PatrolBoat};
+module.exports = Ship;
