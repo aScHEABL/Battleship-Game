@@ -1,4 +1,4 @@
-const Ship = require("./index");
+const Ship = require("./ship-class");
 describe("Test if ship instance methods work", () => {
     test("Test if ship instance method ship.isSunk() works", () => {
         const carrier_test = new Ship(5);
